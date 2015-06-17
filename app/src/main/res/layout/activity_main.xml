@@ -8,7 +8,8 @@
     <com.sysu.qqslidemenu.SlidingScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xuxubin:rightPadding="150dp">
+        xuxubin:rightPadding="150dp"
+        android:id="@+id/slidingMenu">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -20,7 +21,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/material_blue_grey_800"></LinearLayout>
+                android:background="@color/material_blue_grey_800">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/id_toggle_btn"
+                    android:text="切换菜单"
+                    android:onClick="toggleMenu"/>
+
+                </LinearLayout>
             </LinearLayout>
         </com.sysu.qqslidemenu.SlidingScrollView>
 </RelativeLayout>

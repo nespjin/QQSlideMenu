@@ -5,9 +5,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private SlidingScrollView mSlidingMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +20,8 @@ public class MainActivity extends ActionBarActivity {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        mSlidingMenu = (SlidingScrollView) findViewById(R.id.slidingMenu);
     }
 
 
@@ -39,5 +45,11 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void toggleMenu(View view)
+    {
+        if(view.getId() == R.id.id_toggle_btn)
+            mSlidingMenu.toggle();
     }
 }

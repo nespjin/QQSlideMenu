@@ -42,6 +42,8 @@ public class SlidingScrollView extends HorizontalScrollView {
 
     private int mMenuWidth;
 
+    private boolean isOpen = false;
+
 
     /**
      * 未使用自定义属性时调用
@@ -112,8 +114,6 @@ public class SlidingScrollView extends HorizontalScrollView {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b)
     {
-
-
         super.onLayout(changed, l, t, r, b);
 
         //隐藏
@@ -138,14 +138,40 @@ public class SlidingScrollView extends HorizontalScrollView {
                 if(scrollX > mMenuWidth/2)
                 {
                     this.smoothScrollTo(mMenuWidth,0);
+                    isOpen = false;
                 }else
                 {
                     this.smoothScrollTo(0,0);
+                    isOpen = true;
                 }
                 return true;
             default:
                 break;
         }
         return super.onTouchEvent(ev);
+    }
+
+    public void openMenu()
+    {
+        if(isOpen)
+            return;
+        this.smoothScrollTo(0,0);
+        isOpen = true;
+    }
+
+    public void closeMenu()
+    {
+        if(!isOpen)
+            return;
+        this.smoothScrollTo(mMenuWidth,0);
+        isOpen = false;
+    }
+
+    public void toggle()
+    {
+        if(isOpen)
+            closeMenu();
+        else
+            openMenu();
     }
 }
