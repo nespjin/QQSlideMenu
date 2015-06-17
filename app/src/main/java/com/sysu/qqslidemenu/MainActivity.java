@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 public class MainActivity extends ActionBarActivity {
 
-    private SlidingScrollView mSlidingMenu;
+    private SlidingScrollView1 mSlidingMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        mSlidingMenu = (SlidingScrollView) findViewById(R.id.slidingMenu);
+        mSlidingMenu = (SlidingScrollView1) findViewById(R.id.slidingMenu);
     }
 
 

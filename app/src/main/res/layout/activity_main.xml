@@ -3,12 +3,13 @@
                 xmlns:xuxubin="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".MainActivity">
+                tools:context=".MainActivity"
+                android:background="@drawable/img_frame_background">
 
-    <com.sysu.qqslidemenu.SlidingScrollView
+    <com.sysu.qqslidemenu.SlidingScrollView1
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xuxubin:rightPadding="150dp"
+        xuxubin:rightPadding="50dp"
         android:id="@+id/slidingMenu">
 
         <LinearLayout
@@ -32,5 +33,5 @@
 
                 </LinearLayout>
             </LinearLayout>
-        </com.sysu.qqslidemenu.SlidingScrollView>
+        </com.sysu.qqslidemenu.SlidingScrollView1>
 </RelativeLayout>

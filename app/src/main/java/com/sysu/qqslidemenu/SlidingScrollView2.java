@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
  * 在使用view的地方增加命名空间和使用属性
  */
 
-public class SlidingScrollView extends HorizontalScrollView {
+public class SlidingScrollView2 extends HorizontalScrollView {
 
     private LinearLayout mWrapper;
     private ViewGroup mMenu;
@@ -50,11 +50,11 @@ public class SlidingScrollView extends HorizontalScrollView {
      * @param context
      * @param attrs
      */
-    public SlidingScrollView(Context context, AttributeSet attrs) {
+    public SlidingScrollView2(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SlidingScrollView(Context context) {
+    public SlidingScrollView2(Context context) {
         this(context, null);
     }
 
@@ -64,7 +64,7 @@ public class SlidingScrollView extends HorizontalScrollView {
      * @param attrs
      * @param defStyleAttr
      */
-    public SlidingScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SlidingScrollView2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         //获取自定义属性的值
@@ -94,11 +94,6 @@ public class SlidingScrollView extends HorizontalScrollView {
         mScreenWidth = outMetrics.widthPixels;
     }
 
-    /**
-     * 计算子view的宽和高，以及设置自己的宽和高
-     * @param widthMeasureSpec
-     * @param heightMeasureSpec
-     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if(!isFirstTime)
@@ -116,15 +111,6 @@ public class SlidingScrollView extends HorizontalScrollView {
     }
 
     //通过设置偏移量使menu隐藏
-
-    /**
-     * 决定子View的布局
-     * @param changed
-     * @param l
-     * @param t
-     * @param r
-     * @param b
-     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b)
     {
@@ -188,4 +174,5 @@ public class SlidingScrollView extends HorizontalScrollView {
         else
             openMenu();
     }
+
 }

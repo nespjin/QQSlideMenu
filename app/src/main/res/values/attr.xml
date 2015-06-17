@@ -7,4 +7,9 @@
         <attr name = "rightPadding">
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="SlidingScrollView1">
+        <attr name = "rightPadding">
+        </attr>
+    </declare-styleable>
 </resources>

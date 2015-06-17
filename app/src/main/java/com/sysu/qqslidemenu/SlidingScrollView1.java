@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
  * 在使用view的地方增加命名空间和使用属性
  */
 
-public class SlidingScrollView extends HorizontalScrollView {
+public class SlidingScrollView1 extends HorizontalScrollView {
 
     private LinearLayout mWrapper;
     private ViewGroup mMenu;
@@ -36,7 +36,7 @@ public class SlidingScrollView extends HorizontalScrollView {
 
     private int mScreenWidth;
     //单位为dp
-    private int mMenuRightPadding = 50;
+    private int mMenuRightPadding = 30;
 
     private boolean isFirstTime = false;
 
@@ -50,11 +50,11 @@ public class SlidingScrollView extends HorizontalScrollView {
      * @param context
      * @param attrs
      */
-    public SlidingScrollView(Context context, AttributeSet attrs) {
+    public SlidingScrollView1(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SlidingScrollView(Context context) {
+    public SlidingScrollView1(Context context) {
         this(context, null);
     }
 
@@ -64,7 +64,7 @@ public class SlidingScrollView extends HorizontalScrollView {
      * @param attrs
      * @param defStyleAttr
      */
-    public SlidingScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SlidingScrollView1(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         //获取自定义属性的值
@@ -76,7 +76,7 @@ public class SlidingScrollView extends HorizontalScrollView {
             switch (attr)
             {
                 case R.styleable.SlidingScrollView_rightPadding:
-                    //第二个参数时默认值
+                    //第二个参数是默认值
                     mMenuRightPadding = a.getDimensionPixelSize(attr,
                             (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,50,
                                     context.getResources().getDisplayMetrics()));
@@ -94,11 +94,6 @@ public class SlidingScrollView extends HorizontalScrollView {
         mScreenWidth = outMetrics.widthPixels;
     }
 
-    /**
-     * 计算子view的宽和高，以及设置自己的宽和高
-     * @param widthMeasureSpec
-     * @param heightMeasureSpec
-     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if(!isFirstTime)
@@ -116,15 +111,6 @@ public class SlidingScrollView extends HorizontalScrollView {
     }
 
     //通过设置偏移量使menu隐藏
-
-    /**
-     * 决定子View的布局
-     * @param changed
-     * @param l
-     * @param t
-     * @param r
-     * @param b
-     */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b)
     {
@@ -187,5 +173,36 @@ public class SlidingScrollView extends HorizontalScrollView {
             closeMenu();
         else
             openMenu();
+    }
+
+    /**
+     * 滚动发生时调用,不管是手动滚动还是调用方法进行滚动
+     * @param l 滚动条的偏移
+     * @param t
+     * @param oldl
+     * @param oldt
+     */
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+
+        float scale = l * 1.0f / mMenuWidth;//1~0
+
+        //默认缩放中心是矩形中心
+        float rightScale = 0.7f + 0.3f*scale;
+        //设置缩放中心点
+        mContent.setPivotX(0);
+        mContent.setPivotY(mContent.getHeight()/2);
+        mContent.setScaleX(rightScale);
+        mContent.setScaleY(rightScale);
+
+        float leftScale = 1 - 0.3f * scale;
+        mMenu.setScaleX(leftScale);
+        mMenu.setScaleY(leftScale);
+
+        mMenu.setTranslationX(mMenuWidth * scale * 0.7f);
+
+        float opaScale = 1-0.4f*scale;
+        mMenu.setAlpha(opaScale);
     }
 }
