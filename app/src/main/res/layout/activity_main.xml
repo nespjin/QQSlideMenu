@@ -3,10 +3,6 @@
                 xmlns:xuxubin="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
 
     <com.sysu.qqslidemenu.SlidingScrollView
@@ -24,7 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/qq"></LinearLayout>
+                android:background="@color/material_blue_grey_800"></LinearLayout>
             </LinearLayout>
         </com.sysu.qqslidemenu.SlidingScrollView>
 </RelativeLayout>
